@@ -1,0 +1,6 @@
+﻿@viewModel BookRentals.Web.Books.ListViewModel
+@masterPage Global/Layout.dotmaster
+
+ <dot:Content ContentPlaceHolderID="MainContent">
+        <p>List of books</p>
+ </dot:Content>

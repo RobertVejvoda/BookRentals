@@ -1,0 +1,5 @@
+# ignore generated files
+Styles/**/*.css
+Scripts/**/*.js
+wwwroot/css/*.min.css
+wwwroot/js/*.min.js
