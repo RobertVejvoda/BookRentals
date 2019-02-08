@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <Folder Include="Admin\" />
-    <Folder Include="NewFolder\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\js\" />
   </ItemGroup>
