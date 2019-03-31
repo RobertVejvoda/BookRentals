@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace BookRentals.Api
+namespace BookRentals.Bookings.API
 {
     public class Startup
     {

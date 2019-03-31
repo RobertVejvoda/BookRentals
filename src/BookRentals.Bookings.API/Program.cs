@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace BookRentals.Api
+namespace BookRentals.Bookings.API
 {
     public class Program
     {
