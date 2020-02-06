@@ -13,9 +13,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{3640276C-988
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bookings", "Bookings", "{A1BCC49F-60B1-4765-A76F-6190B1EB79E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookRentals.Bookings.Domain", "BookRentals.Bookings.Domain\BookRentals.Bookings.Domain.csproj", "{F428C9D7-8CE2-4C62-90F4-B884A7D056A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookRentals.Bookings.Domain", "BookRentals.Bookings.Domain\BookRentals.Bookings.Domain.csproj", "{F428C9D7-8CE2-4C62-90F4-B884A7D056A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookRentals.Bookings.Infrastructure", "BookRentals.Bookings.Infrastructure\BookRentals.Bookings.Infrastructure.csproj", "{51749D41-6C5A-4872-ADED-EFF9B6F5065D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookRentals.Bookings.Infrastructure", "BookRentals.Bookings.Infrastructure\BookRentals.Bookings.Infrastructure.csproj", "{51749D41-6C5A-4872-ADED-EFF9B6F5065D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "b", "b", "{3D4A5065-7863-4FEE-B9AC-1982FDF1C300}"
+	ProjectSection(SolutionItems) = preProject
+		..\Readme.md = ..\Readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
