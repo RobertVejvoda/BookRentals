@@ -1,19 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
-    <ApplicationIcon />
-    <OutputType>Library</OutputType>
-    <StartupObject />
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>821bd497-2f96-453e-9215-f9c3a298977d</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Application\Commands\" />
+    <Folder Include="Application\Queries\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="MediatR" Version="8.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BookRentals.Bookings.Domain\BookRentals.Bookings.Domain.csproj" />
+    <ProjectReference Include="..\BookRentals.Bookings.Infrastructure\BookRentals.Bookings.Infrastructure.csproj" />
+    <ProjectReference Include="..\BookRentals.Core\BookRentals.Core.csproj" />
   </ItemGroup>
 
 </Project>
