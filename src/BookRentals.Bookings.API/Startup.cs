@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Reflection;
 using MediatR;
+using Microsoft.OpenApi.Models;
 
 namespace BookRentals.Bookings.API
 {
@@ -26,6 +27,13 @@ namespace BookRentals.Bookings.API
         {
             services.AddControllers();
 
+            services.AddAuthentication("Bearer").AddJwtBearer("Bearer", options => 
+            {
+                options.Authority = "http://localhost:5000";
+                options.RequireHttpsMetadata = false;
+                options.Audience = "bookrentals.bookings.api";
+            });
+
             services.AddEntityFrameworkSqlServer()
                   .AddDbContext<BookingsContext>(options =>
                   {
@@ -39,7 +47,12 @@ namespace BookRentals.Bookings.API
                        ServiceLifetime.Scoped  //Showing explicitly that the DbContext is shared across the HTTP request scope (graph of objects started in the HTTP request)
                   );
 
-            services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "BookRentals Bookings API", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,9 +67,19 @@ namespace BookRentals.Bookings.API
                 app.UseHsts();
             }
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "BookRentals Bookings API V1");
+                c.RoutePrefix = string.Empty;
+            });
+
             app.UseRouting();
             app.UseCors();
             app.UseHttpsRedirection();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

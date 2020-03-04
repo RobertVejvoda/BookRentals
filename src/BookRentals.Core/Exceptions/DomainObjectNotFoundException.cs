@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace BookRentals.Core.Exceptions
 {
-    [Serializable]
-    public class DomainObjectNotFoundException : Exception
+    public class DomainObjectNotFoundException : DomainException
     {
         public DomainObjectNotFoundException()
         {
