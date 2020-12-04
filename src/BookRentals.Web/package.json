@@ -11,16 +11,16 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "jquery": "^3.4.0",
-    "node-sass": "^4.9.3"
+    "jquery": "^3.5.1"
   },
   "devDependencies": {
     "gulp": "^4.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-cssmin": "^0.2.0",
-    "gulp-htmlmin": "^3.0.0",
-    "gulp-sass": "^3.1.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-sass": "^3.2.1",
     "gulp-uglify": "^3.0.1",
+    "node-sass": "^4.14.1",
     "rimraf": "^2.6.2"
   }
 }

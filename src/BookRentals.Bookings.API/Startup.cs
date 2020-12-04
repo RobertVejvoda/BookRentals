@@ -1,15 +1,13 @@
 ﻿using BookRentals.Bookings.Infrastructure;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Reflection;
-using MediatR;
-using Microsoft.OpenApi.Models;
 
 namespace BookRentals.Bookings.API
 {
@@ -27,9 +25,9 @@ namespace BookRentals.Bookings.API
         {
             services.AddControllers();
 
-            services.AddAuthentication("Bearer").AddJwtBearer("Bearer", options => 
+            services.AddAuthentication("Bearer").AddJwtBearer("Bearer", options =>
             {
-                options.Authority = "http://localhost:5000";
+                options.Authority = "https://localhost:44319";
                 options.RequireHttpsMetadata = false;
                 options.Audience = "bookrentals.bookings.api";
             });
@@ -49,15 +47,34 @@ namespace BookRentals.Bookings.API
 
             services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
 
-            services.AddSwaggerGen(c =>
+            services.AddSwaggerDocument(config =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "BookRentals Bookings API", Version = "v1" });
+                config.PostProcess = document =>
+                {
+                    document.Info.Version = "v1";
+                    document.Info.Title = "Book Rentals API";
+                    document.Info.Description = "Rent books, not buy!";
+                    document.Info.TermsOfService = "None";
+                    document.Info.Contact = new NSwag.OpenApiContact
+                    {
+                        Name = "BookRentals s.r.o.",
+                        Email = string.Empty,
+                        Url = "https://bookrentals.cz/"
+                    };
+                    document.Info.License = new NSwag.OpenApiLicense
+                    {
+                        Name = "Use under LICX",
+                        Url = "https://example.com/license"
+                    };
+                };
             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseStaticFiles();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -67,12 +84,9 @@ namespace BookRentals.Bookings.API
                 app.UseHsts();
             }
 
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "BookRentals Bookings API V1");
-                c.RoutePrefix = string.Empty;
-            });
+            // register swagger
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
 
             app.UseRouting();
             app.UseCors();

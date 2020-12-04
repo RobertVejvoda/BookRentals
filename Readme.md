@@ -1,3 +1,3 @@
 #Readme
 
-test test / and another test!
+npm install node-sass gulp-sass --save-dev

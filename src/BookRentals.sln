@@ -17,18 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookRentals.Bookings.Domain
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookRentals.Bookings.Infrastructure", "BookRentals.Bookings.Infrastructure\BookRentals.Bookings.Infrastructure.csproj", "{51749D41-6C5A-4872-ADED-EFF9B6F5065D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "b", "b", "{3D4A5065-7863-4FEE-B9AC-1982FDF1C300}"
-	ProjectSection(SolutionItems) = preProject
-		..\Readme.md = ..\Readme.md
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{84DA23D6-ECED-4C25-9BD7-9CE5175214AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookRentals.Core", "BookRentals.Core\BookRentals.Core.csproj", "{C58E7419-8677-4FAA-8CDB-0C157CEDC40B}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{58E784D5-4B19-4A2D-B25E-F284ED19370E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookRentals.IdentityServer", "BookRentals.IdentityServer\BookRentals.IdentityServer.csproj", "{666239F5-4971-4CEB-9A94-9F607150C31E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookRentals.Core", "BookRentals.Core\BookRentals.Core.csproj", "{C58E7419-8677-4FAA-8CDB-0C157CEDC40B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,10 +47,6 @@ Global
 		{C58E7419-8677-4FAA-8CDB-0C157CEDC40B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C58E7419-8677-4FAA-8CDB-0C157CEDC40B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C58E7419-8677-4FAA-8CDB-0C157CEDC40B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{666239F5-4971-4CEB-9A94-9F607150C31E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{666239F5-4971-4CEB-9A94-9F607150C31E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{666239F5-4971-4CEB-9A94-9F607150C31E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{666239F5-4971-4CEB-9A94-9F607150C31E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,8 +59,6 @@ Global
 		{51749D41-6C5A-4872-ADED-EFF9B6F5065D} = {A1BCC49F-60B1-4765-A76F-6190B1EB79E9}
 		{84DA23D6-ECED-4C25-9BD7-9CE5175214AF} = {D5F69AEB-780F-40DC-B83A-28314CE359FC}
 		{C58E7419-8677-4FAA-8CDB-0C157CEDC40B} = {84DA23D6-ECED-4C25-9BD7-9CE5175214AF}
-		{58E784D5-4B19-4A2D-B25E-F284ED19370E} = {D5F69AEB-780F-40DC-B83A-28314CE359FC}
-		{666239F5-4971-4CEB-9A94-9F607150C31E} = {58E784D5-4B19-4A2D-B25E-F284ED19370E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D50850E7-492F-4270-8E03-F5F3561FD34C}
