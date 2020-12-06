@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <TypeScriptToolsVersion>4.0</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <UserSecretsId>b3bb0dfa-f4d1-42b3-81ff-f5c577c90ad3</UserSecretsId>
   </PropertyGroup>
 
