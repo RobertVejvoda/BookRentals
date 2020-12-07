@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookRentals.Core.Exceptions
+namespace BookRentals.Core.Infrastructure.Exceptions
 {
     [Serializable]
     public class RecordNotFoundException : Exception

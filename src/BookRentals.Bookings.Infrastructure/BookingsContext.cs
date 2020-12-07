@@ -1,35 +1,53 @@
-﻿using BookRentals.Core.Infrastructure;
+﻿using BookRentals.Bookings.Infrastructure.Configuration;
+using BookRentals.Core.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Microsoft.Extensions.Logging;
 
 namespace BookRentals.Bookings.Infrastructure
 {
     public class BookingsContext : DbContext, IUnitOfWork
     {
         public const string DEFAULT_SCHEMA = "bookings";
+        private readonly ILoggerFactory loggerFactory;
 
-        public BookingsContext(DbContextOptions<BookingsContext> options) : base(options)
+        public BookingsContext(DbContextOptions<BookingsContext> options, ILoggerFactory loggerFactory) : base(options)
         {
+            this.loggerFactory = loggerFactory;
+        }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder
+                .EnableSensitiveDataLogging()
+                .UseSqlServer("name=ConnectionStrings:Bookings", providerOptions => { providerOptions.EnableRetryOnFailure(); })
+                .UseLoggerFactory(loggerFactory);
+                
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // modelBuilder.ApplyConfiguration(new BookingEntityConfiguration());
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ArchiveEntityConfiguration).Assembly);
         }
     }
 
     public class BookingContextDesignFactory : IDesignTimeDbContextFactory<BookingsContext>
     {
+        private readonly ILoggerFactory loggerFactory;
+
+        public BookingContextDesignFactory(ILoggerFactory loggerFactory)
+        {
+            this.loggerFactory = loggerFactory;
+        }
+
         public BookingsContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<BookingsContext>()
-                .UseSqlServer("Data Source=.\\SQLExpress;Initial Catalog=BookRentals;MultipleActiveResultSets=True;Integrated Security=true;");
+                .EnableSensitiveDataLogging()
+                .UseSqlServer("name=ConnectionStrings:Bookings", providerOptions => { providerOptions.EnableRetryOnFailure(); })
+                .UseLoggerFactory(loggerFactory);
 
-            return new BookingsContext(optionsBuilder.Options);
+            return new BookingsContext(optionsBuilder.Options, loggerFactory);
         }
     }
 }

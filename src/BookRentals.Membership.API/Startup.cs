@@ -1,4 +1,4 @@
-﻿using BookRentals.Bookings.Infrastructure;
+using BookRentals.Membership.Infrastructure;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -6,10 +6,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
 using System;
 using System.Reflection;
 
-namespace BookRentals.Bookings.API
+namespace BookRentals.Membership.API
 {
     public class Startup
     {
@@ -23,22 +24,23 @@ namespace BookRentals.Bookings.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddControllers();
 
             services.AddAuthentication("Bearer").AddJwtBearer("Bearer", options =>
             {
                 options.Authority = "https://localhost:44319";
                 options.RequireHttpsMetadata = false;
-                options.Audience = "bookrentals.bookings.api";
+                options.Audience = "bookrentals.membership.api";
             });
 
             services.AddEntityFrameworkSqlServer()
-                  .AddDbContext<BookingsContext>(options =>
+                  .AddDbContext<MembershipContext>(options =>
                   {
-                      options.UseSqlServer(Configuration["ConnectionStrings:Bookings"],
+                      options.UseSqlServer(Configuration["ConnectionStrings:Membership"],
                           sqlServerOptionsAction: sqlOptions =>
                           {
-                              sqlOptions.MigrationsAssembly(typeof(BookingsContext).GetTypeInfo().Assembly.GetName().Name);
+                              sqlOptions.MigrationsAssembly(typeof(MembershipContext).GetTypeInfo().Assembly.GetName().Name);
                               sqlOptions.EnableRetryOnFailure(maxRetryCount: 5, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
                           });
                   },
@@ -52,8 +54,8 @@ namespace BookRentals.Bookings.API
                 config.PostProcess = document =>
                 {
                     document.Info.Version = "v1";
-                    document.Info.Title = "Bibliotheca API";
-                    document.Info.Description = "Borrow books, not buy!";
+                    document.Info.Title = "Book Rentals API";
+                    document.Info.Description = "Rent books, not buy!";
                     document.Info.TermsOfService = "None";
                     document.Info.Contact = new NSwag.OpenApiContact
                     {
