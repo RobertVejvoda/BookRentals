@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+   <UserSecretsId>b3bb0dfa-f4d1-42b3-81ff-f5c577c90ad3</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BookRentals.Bookings.Infrastructure\BookRentals.Bookings.Infrastructure.csproj" />
+    <ProjectReference Include="..\BookRentals.Engine.Infrastructure\BookRentals.Engine.Infrastructure.csproj" />
+    <ProjectReference Include="..\BookRentals.Mediotheca.Infrastructure\BookRentals.Mediotheca.Infrastructure.csproj" />
+    <ProjectReference Include="..\BookRentals.Membership.Infrastructure\BookRentals.Membership.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

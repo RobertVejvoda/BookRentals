@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookRentals.Core.Infrastructure.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace BookRentals.Bookings.Infrastructure.Entities
 {
-    public class ArchiveEntity
+    public class ArchiveEntity : AuditableEntity
     {
-        public Guid Id { get; set; }
-        
+        public string Title { get; set; }
     }
 }

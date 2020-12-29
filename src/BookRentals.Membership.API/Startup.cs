@@ -35,12 +35,12 @@ namespace BookRentals.Membership.API
             });
 
             services.AddEntityFrameworkSqlServer()
-                  .AddDbContext<MembershipContext>(options =>
+                  .AddDbContext<MembershipDbContext>(options =>
                   {
                       options.UseSqlServer(Configuration["ConnectionStrings:Membership"],
                           sqlServerOptionsAction: sqlOptions =>
                           {
-                              sqlOptions.MigrationsAssembly(typeof(MembershipContext).GetTypeInfo().Assembly.GetName().Name);
+                              sqlOptions.MigrationsAssembly(typeof(MembershipDbContext).GetTypeInfo().Assembly.GetName().Name);
                               sqlOptions.EnableRetryOnFailure(maxRetryCount: 5, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
                           });
                   },

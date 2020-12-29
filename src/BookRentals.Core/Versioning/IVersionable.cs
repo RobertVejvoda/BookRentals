@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookRentals.Core.Infrastructure.Configurations
+namespace BookRentals.Core.Versioning
 {
-    public class CodeGroupEntityConfiguration : IEntify
+    public interface IVersionable
     {
-        
+        long Version { get; }
     }
 }

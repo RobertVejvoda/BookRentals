@@ -13,6 +13,13 @@ namespace BookRentals.Bookings.Infrastructure.Configuration
     {
         public void Configure(EntityTypeBuilder<ArchiveEntity> builder)
         {
+            builder.ToTable("Archive");
+            builder.HasKey(p => p.Id).IsClustered();
+            builder.Property(p => p.Ident).UseIdentityColumn();
+            builder.Property(p => p.Title).IsUnicode(true).HasMaxLength(128);
+            builder.Property(p => p.ModifiedById).IsRequired();
+            builder.Property(p => p.ModifiedOn).HasDefaultValueSql("CURRENT_TIMESTAMP").IsRequired();
+            builder.Property(p => p.Version).IsRowVersion();
         }
     }
 }

@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace BookRentals.Core.Infrastructure.Entities
 {
-    public interface IAuditableEntity
+    public class LanguageEntity : AuditableEntity
     {
-        DateTime CreatedDate { get; set; }
-        int CreatedById { get; set; }
+        public int LanguageId { get; set; }
+        public string Caption { get; set; }
+        public string CultureCode { get; set; }
     }
 }

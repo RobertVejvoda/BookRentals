@@ -33,12 +33,12 @@ namespace BookRentals.Bookings.API
             });
 
             services.AddEntityFrameworkSqlServer()
-                  .AddDbContext<BookingsContext>(options =>
+                  .AddDbContext<BookingsDbContext>(options =>
                   {
                       options.UseSqlServer(Configuration["ConnectionStrings:Bookings"],
                           sqlServerOptionsAction: sqlOptions =>
                           {
-                              sqlOptions.MigrationsAssembly(typeof(BookingsContext).GetTypeInfo().Assembly.GetName().Name);
+                              sqlOptions.MigrationsAssembly(typeof(BookingsDbContext).GetTypeInfo().Assembly.GetName().Name);
                               sqlOptions.EnableRetryOnFailure(maxRetryCount: 5, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
                           });
                   },
