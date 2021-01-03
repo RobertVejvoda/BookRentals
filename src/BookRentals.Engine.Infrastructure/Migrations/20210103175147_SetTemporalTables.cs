@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BookRentals.Engine.Infrastructure.Migrations
 {
-    public partial class AddTemporalTables : Migration
+    public partial class SetTemporalTables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

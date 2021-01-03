@@ -1,7 +1,12 @@
 ﻿using BookRentals.Core.Infrastructure;
+using BookRentals.Core.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace BookRentals.Engine.Infrastructure
 {
@@ -36,5 +41,35 @@ namespace BookRentals.Engine.Infrastructure
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(EngineDbContext).Assembly);
             modelBuilder.HasChangeTrackingStrategy(ChangeTrackingStrategy.Snapshot);
         }
+
+        public override int SaveChanges()
+        {
+            TrackDeletedEntities();
+            return base.SaveChanges();
+        }
+
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            TrackDeletedEntities();
+            return await base.SaveChangesAsync(cancellationToken);
+        }
+
+        public void TrackDeletedEntities()
+        {
+            var entries = ChangeTracker.Entries();
+            foreach (var entry in entries.Where(x => x.State == EntityState.Deleted))
+            {
+                var entityName = entry.Entity.GetType().BaseType.Name;
+                this.Set<DeletedEntity>().Add(new DeletedEntity
+                {
+                    DeletedById = 20000,
+                    DeletedOn = DateTime.UtcNow,
+                    EntityId = (entry.Entity as Entity).Id,
+                    EntityName = entityName
+                });
+            }
+
+        }
+
     }
 }

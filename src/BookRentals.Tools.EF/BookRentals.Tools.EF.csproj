@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.8.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -17,6 +18,10 @@
     <ProjectReference Include="..\BookRentals.Engine.Infrastructure\BookRentals.Engine.Infrastructure.csproj" />
     <ProjectReference Include="..\BookRentals.Mediotheca.Infrastructure\BookRentals.Mediotheca.Infrastructure.csproj" />
     <ProjectReference Include="..\BookRentals.Membership.Infrastructure\BookRentals.Membership.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Engine\" />
   </ItemGroup>
 
 </Project>

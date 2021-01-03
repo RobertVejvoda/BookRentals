@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{D5F6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{3640276C-9886-40AC-8A7B-80ABF33CDF97}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Bookings", "4. Bookings", "{A1BCC49F-60B1-4765-A76F-6190B1EB79E9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Bookings", "5. Bookings", "{A1BCC49F-60B1-4765-A76F-6190B1EB79E9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookRentals.Bookings.Domain", "BookRentals.Bookings.Domain\BookRentals.Bookings.Domain.csproj", "{F428C9D7-8CE2-4C62-90F4-B884A7D056A2}"
 EndProject
@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookRentals.Core", "BookRen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookRentals.Membership.Infrastructure", "BookRentals.Membership.Infrastructure\BookRentals.Membership.Infrastructure.csproj", "{E04AE925-4D42-48D6-8A1E-05052EC5345D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Membership", "5. Membership", "{B7E20276-5771-4F86-A79D-1BD5BE020A32}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6. Membership", "6. Membership", "{B7E20276-5771-4F86-A79D-1BD5BE020A32}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookRentals.Membership.Domain", "BookRentals.Membership.Domain\BookRentals.Membership.Domain.csproj", "{918E2D64-BC92-4640-AEF6-D7FFD005C599}"
 EndProject
@@ -49,7 +49,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookRentals.Core.Infrastruc
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Tools", "5. Tools", "{629DCDFC-B12C-4CA3-A9EC-A3E5EA1BD1FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookRentals.Tools.EF", "BookRentals.Tools.EF\BookRentals.Tools.EF.csproj", "{59629A57-76D7-4D84-BD09-21FA406A11DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookRentals.Tools.EF", "BookRentals.Tools.EF\BookRentals.Tools.EF.csproj", "{59629A57-76D7-4D84-BD09-21FA406A11DF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Stock", "4. Stock", "{53C51A1A-9801-4C18-9AE4-B25C9D1AB18F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookRentals.Stock", "BookRentals.Stock\BookRentals.Stock.csproj", "{9F969E39-4C85-4C63-B309-C6EF2D3B5750}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -121,6 +125,10 @@ Global
 		{59629A57-76D7-4D84-BD09-21FA406A11DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59629A57-76D7-4D84-BD09-21FA406A11DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59629A57-76D7-4D84-BD09-21FA406A11DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F969E39-4C85-4C63-B309-C6EF2D3B5750}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F969E39-4C85-4C63-B309-C6EF2D3B5750}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F969E39-4C85-4C63-B309-C6EF2D3B5750}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F969E39-4C85-4C63-B309-C6EF2D3B5750}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -148,6 +156,8 @@ Global
 		{1D66592F-12A7-47AA-8A6F-545C25B22481} = {84DA23D6-ECED-4C25-9BD7-9CE5175214AF}
 		{629DCDFC-B12C-4CA3-A9EC-A3E5EA1BD1FD} = {D5F69AEB-780F-40DC-B83A-28314CE359FC}
 		{59629A57-76D7-4D84-BD09-21FA406A11DF} = {629DCDFC-B12C-4CA3-A9EC-A3E5EA1BD1FD}
+		{53C51A1A-9801-4C18-9AE4-B25C9D1AB18F} = {D5F69AEB-780F-40DC-B83A-28314CE359FC}
+		{9F969E39-4C85-4C63-B309-C6EF2D3B5750} = {53C51A1A-9801-4C18-9AE4-B25C9D1AB18F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D50850E7-492F-4270-8E03-F5F3561FD34C}

@@ -9,8 +9,8 @@ namespace BookRentals.Engine.Infrastructure.Configurations
         public void Configure(EntityTypeBuilder<CodeGroupItemEntity> builder)
         {
             builder.ToTable("CodeGroupItem");
-            builder.HasKey(p => new { p.CodeGroupId, p.CodeItemId });
-            builder.Property(p => p.Ident).UseIdentityColumn();
+            builder.HasKey(p => new { p.CodeGroupId, p.CodeItemId, p.ConfigurationKey });
+            builder.Property(p => p.Ident).ValueGeneratedOnAdd().UseIdentityColumn().Metadata.SetAfterSaveBehavior(Microsoft.EntityFrameworkCore.Metadata.PropertySaveBehavior.Ignore);
             builder.Property(p => p.ConfigurationKey).HasDefaultValueSql("'*'").IsUnicode(false).HasMaxLength(32).IsRequired();
             builder.Property(p => p.DisplayOrder).HasDefaultValue(0).IsRequired();
             builder.Property(p => p.IsDisabled).HasDefaultValue(false).IsRequired();

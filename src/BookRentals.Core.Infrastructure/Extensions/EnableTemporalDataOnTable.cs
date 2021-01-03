@@ -16,7 +16,7 @@ namespace BookRentals.Core.Infrastructure.Extensions
                         ALTER TABLE {schemaName}.{tableName}   
                         ADD  SysStartTime datetime2 (2) GENERATED ALWAYS AS ROW START HIDDEN    
                                 constraint DF_{schemaName}_{tableName}_SysStartTime DEFAULT DATEADD(second, -1, SYSUTCDATETIME())  
-                            , SysEndTime datetime2 (2)  GENERATED ALWAYS AS ROW END HIDDEN     
+                            , SysEndTime datetime2 (2) GENERATED ALWAYS AS ROW END HIDDEN     
                                 constraint DF_{schemaName}_{tableName}_SysEndTime DEFAULT '9999.12.31 23:59:59.99'  
                             , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime);   
  

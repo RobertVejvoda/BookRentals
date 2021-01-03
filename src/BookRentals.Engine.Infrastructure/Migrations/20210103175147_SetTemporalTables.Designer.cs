@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookRentals.Engine.Infrastructure.Migrations
 {
     [DbContext(typeof(EngineDbContext))]
-    [Migration("20201229225309_AddTemporalTables")]
-    partial class AddTemporalTables
+    [Migration("20210103175147_SetTemporalTables")]
+    partial class SetTemporalTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,7 +26,8 @@ namespace BookRentals.Engine.Infrastructure.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWSEQUENTIALID()");
 
                     b.Property<string>("Caption")
                         .IsRequired()
@@ -44,15 +45,13 @@ namespace BookRentals.Engine.Infrastructure.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("LanguageId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ModifiedById")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ModifiedOn")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
+                        .HasPrecision(3)
+                        .HasColumnType("datetime2(3)")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<byte[]>("Version")
@@ -70,16 +69,14 @@ namespace BookRentals.Engine.Infrastructure.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWSEQUENTIALID()");
 
                     b.Property<string>("Caption")
                         .IsRequired()
                         .HasMaxLength(128)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(128)");
-
-                    b.Property<int>("CodeGroupId")
-                        .HasColumnType("int");
 
                     b.Property<string>("CodeGroupRef")
                         .IsRequired()
@@ -102,7 +99,8 @@ namespace BookRentals.Engine.Infrastructure.Migrations
 
                     b.Property<DateTime>("ModifiedOn")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
+                        .HasPrecision(3)
+                        .HasColumnType("datetime2(3)")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<byte[]>("Version")
@@ -125,7 +123,6 @@ namespace BookRentals.Engine.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ConfigurationKey")
-                        .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(32)
                         .IsUnicode(false)
@@ -147,7 +144,7 @@ namespace BookRentals.Engine.Infrastructure.Migrations
                         .HasColumnType("bit")
                         .HasDefaultValue(false);
 
-                    b.HasKey("CodeGroupId", "CodeItemId");
+                    b.HasKey("CodeGroupId", "CodeItemId", "ConfigurationKey");
 
                     b.HasIndex("CodeItemId");
 
@@ -158,16 +155,14 @@ namespace BookRentals.Engine.Infrastructure.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWSEQUENTIALID()");
 
                     b.Property<string>("Caption")
                         .IsRequired()
                         .HasMaxLength(128)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(128)");
-
-                    b.Property<int>("CodeItemId")
-                        .HasColumnType("int");
 
                     b.Property<string>("CodeItemRef")
                         .IsRequired()
@@ -190,8 +185,15 @@ namespace BookRentals.Engine.Infrastructure.Migrations
 
                     b.Property<DateTime>("ModifiedOn")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
+                        .HasPrecision(3)
+                        .HasColumnType("datetime2(3)")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.Property<string>("Symbol")
+                        .HasMaxLength(3)
+                        .IsUnicode(true)
+                        .HasColumnType("nchar(3)")
+                        .IsFixedLength(true);
 
                     b.Property<byte[]>("Version")
                         .IsConcurrencyToken()
@@ -208,16 +210,14 @@ namespace BookRentals.Engine.Infrastructure.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValueSql("NEWSEQUENTIALID()");
 
                     b.Property<string>("Caption")
                         .IsRequired()
                         .HasMaxLength(128)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(128)");
-
-                    b.Property<int>("ConfigurationId")
-                        .HasColumnType("int");
 
                     b.Property<string>("ConfigurationKey")
                         .IsRequired()
@@ -242,7 +242,8 @@ namespace BookRentals.Engine.Infrastructure.Migrations
 
                     b.Property<DateTime>("ModifiedOn")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
+                        .HasPrecision(3)
+                        .HasColumnType("datetime2(3)")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<string>("Reference")

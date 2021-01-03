@@ -15,15 +15,14 @@ namespace BookRentals.Engine.Infrastructure.Migrations
                 schema: "engine",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CodeGroupId = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWSEQUENTIALID()"),
                     CodeGroupRef = table.Column<string>(type: "varchar(32)", unicode: false, maxLength: 32, nullable: false),
                     Caption = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(512)", maxLength: 512, nullable: true),
                     Ident = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Version = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2(3)", precision: 3, nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
                     ModifiedById = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -37,15 +36,15 @@ namespace BookRentals.Engine.Infrastructure.Migrations
                 schema: "engine",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CodeItemId = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWSEQUENTIALID()"),
                     CodeItemRef = table.Column<string>(type: "varchar(64)", unicode: false, maxLength: 64, nullable: false),
                     Caption = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    Symbol = table.Column<string>(type: "nchar(3)", fixedLength: true, maxLength: 3, nullable: true),
                     Description = table.Column<string>(type: "nvarchar(512)", maxLength: 512, nullable: true),
                     Ident = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Version = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2(3)", precision: 3, nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
                     ModifiedById = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -59,8 +58,7 @@ namespace BookRentals.Engine.Infrastructure.Migrations
                 schema: "engine",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ConfigurationId = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWSEQUENTIALID()"),
                     Reference = table.Column<string>(type: "varchar(64)", unicode: false, maxLength: 64, nullable: false),
                     Caption = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(512)", maxLength: 512, nullable: true),
@@ -68,7 +66,7 @@ namespace BookRentals.Engine.Infrastructure.Migrations
                     Ident = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Version = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2(3)", precision: 3, nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
                     ModifiedById = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -82,14 +80,13 @@ namespace BookRentals.Engine.Infrastructure.Migrations
                 schema: "engine",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    LanguageId = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWSEQUENTIALID()"),
                     Caption = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
                     CultureCode = table.Column<string>(type: "char(5)", unicode: false, fixedLength: true, maxLength: 5, nullable: true),
                     Ident = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Version = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: true),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2(3)", precision: 3, nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
                     ModifiedById = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -105,15 +102,15 @@ namespace BookRentals.Engine.Infrastructure.Migrations
                 {
                     CodeGroupId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CodeItemId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ConfigurationKey = table.Column<string>(type: "varchar(32)", unicode: false, maxLength: 32, nullable: false, defaultValueSql: "'*'"),
                     Ident = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ConfigurationKey = table.Column<string>(type: "varchar(32)", unicode: false, maxLength: 32, nullable: false, defaultValueSql: "'*'"),
                     DisplayOrder = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
                     IsDisabled = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CodeGroupItem", x => new { x.CodeGroupId, x.CodeItemId });
+                    table.PrimaryKey("PK_CodeGroupItem", x => new { x.CodeGroupId, x.CodeItemId, x.ConfigurationKey });
                     table.ForeignKey(
                         name: "FK_CodeGroupItem_CodeGroup_CodeGroupId",
                         column: x => x.CodeGroupId,

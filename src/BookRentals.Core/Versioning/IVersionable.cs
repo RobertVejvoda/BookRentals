@@ -8,6 +8,6 @@ namespace BookRentals.Core.Versioning
 {
     public interface IVersionable
     {
-        long Version { get; }
+        byte[] Version { get; }
     }
 }

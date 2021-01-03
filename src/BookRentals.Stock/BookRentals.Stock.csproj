@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Domain\Builder.cs" />
+    <Compile Remove="Domain\IStockItem.cs" />
+    <Compile Remove="Domain\StockCard.cs" />
+    <Compile Remove="Domain\StockContainer.cs" />
+    <Compile Remove="Domain\StockContainerId.cs" />
+    <Compile Remove="Domain\StockContainerInfo.cs" />
+    <Compile Remove="Domain\StockContainerType.cs" />
+    <Compile Remove="Domain\StockContainerTypeDimension.cs" />
+    <Compile Remove="Domain\StockContainerTypeId.cs" />
+    <Compile Remove="Domain\StockItem.cs" />
+    <Compile Remove="Domain\StockItemAllocation.cs" />
+    <Compile Remove="Domain\StockItemCOLine.cs" />
+    <Compile Remove="Domain\StockItemId.cs" />
+    <Compile Remove="Domain\StockItemLocationQuantity.cs" />
+    <Compile Remove="Domain\StockItemMaterial.cs" />
+    <Compile Remove="Domain\StockItemPODeliveryLine.cs" />
+    <Compile Remove="Domain\StockLocation.cs" />
+    <Compile Remove="Domain\StockLocationGroup.cs" />
+    <Compile Remove="Domain\StockLocationGroupId.cs" />
+    <Compile Remove="Domain\StockLocationId.cs" />
+    <Compile Remove="Domain\StockMemo.cs" />
+    <Compile Remove="Domain\StockTaking.cs" />
+    <Compile Remove="Domain\StockTakingDiff.cs" />
+    <Compile Remove="Domain\StockTakingDiffApplicationResult.cs" />
+    <Compile Remove="Domain\StockTakingDiffApplicationState.cs" />
+    <Compile Remove="Domain\StockTakingDiffId.cs" />
+    <Compile Remove="Domain\StockTakingId.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BookRentals.Core\BookRentals.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Domain\" />
+  </ItemGroup>
+
+</Project>
